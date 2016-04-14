@@ -20,7 +20,7 @@ class RenseignerFicheController extends Controller {
                                         'format' => 'ddMMyyyy'
                                         ))
                 ->add('libelle', 'integer')
-                ->add('quantite', 'integer')
+                ->add('montant', 'money')
                 ->add('nbJustificatif', 'integer')
                 ->add('montantTotal', 'money')
                 ->add('Valider', 'submit')

@@ -7,76 +7,57 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Lignefraisforfait
  *
- * @ORM\Table(name="LigneFraisForfait")
+ * @ORM\Table(name="LigneFraisForfait", indexes={@ORM\Index(name="FK_LigneFraisForfait_id_FraisForfait", columns={"id_FraisForfait"}), @ORM\Index(name="FK_LigneFraisForfait_id_FicheFrais", columns={"id_FicheFrais"})})
  * @ORM\Entity
  */
 class Lignefraisforfait
 {
-  
-
-      /**
-     * @var \Visiteur
+    /**
+     * @var integer
      *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Fichefrais")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idVisiteur", referencedColumnName="idVisiteur")
-     * })
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idvisiteur;
+    private $id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="mois", type="integer", length=6, nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Fichefrais")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="mois", referencedColumnName="mois")
-     * })
-     */
-    private $mois;
-
-    
-    /**
-     * @var \FraisForfait
-     * 
-     * @ORM\ManyToOne(targetEntity="Fraisforfait", inversedBy="id")
-     * @ORM\JoinColumn(name="idFraisForfait")
-     */
-    private $idfraisforfait;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="quantite", type="integer")
+     * @ORM\Column(name="quantite", type="integer", nullable=true)
      */
     private $quantite;
 
     /**
-     * Set mois
+     * @var \Fichefrais
      *
-     * @param integer $mois
-     * @return Lignefraisforfait
+     * @ORM\ManyToOne(targetEntity="Fichefrais")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_FicheFrais", referencedColumnName="id")
+     * })
      */
-    public function setMois($mois)
-    {
-        $this->mois = $mois;
-
-        return $this;
-    }
+    private $idFichefrais;
 
     /**
-     * Get mois
+     * @var \Fraisforfait
+     *
+     * @ORM\ManyToOne(targetEntity="Fraisforfait")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_FraisForfait", referencedColumnName="id")
+     * })
+     */
+    private $idFraisforfait;
+
+
+
+    /**
+     * Get id
      *
      * @return integer 
      */
-    public function getMois()
+    public function getId()
     {
-        return $this->mois;
+        return $this->id;
     }
 
     /**
@@ -101,93 +82,50 @@ class Lignefraisforfait
     {
         return $this->quantite;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idfraisforfait = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Set id
+     * Set idFichefrais
      *
-     * @param integer $id
+     * @param \ACYG\GsbFraisBundle\Entity\Fichefrais $idFichefrais
      * @return Lignefraisforfait
      */
-    public function setId($id)
+    public function setIdFichefrais(\ACYG\GsbFraisBundle\Entity\Fichefrais $idFichefrais = null)
     {
-        $this->id = $id;
+        $this->idFichefrais = $idFichefrais;
 
         return $this;
     }
 
     /**
-     * Set idvisiteur
-     *
-     * @param \ACYG\GsbFraisBundle\Entity\Fichefrais $idvisiteur
-     * @return Lignefraisforfait
-     */
-    public function setIdvisiteur(\ACYG\GsbFraisBundle\Entity\Fichefrais $idvisiteur)
-    {
-        $this->idvisiteur = $idvisiteur;
-
-        return $this;
-    }
-
-    /**
-     * Get idvisiteur
+     * Get idFichefrais
      *
      * @return \ACYG\GsbFraisBundle\Entity\Fichefrais 
      */
-    public function getIdvisiteur()
+    public function getIdFichefrais()
     {
-        return $this->idvisiteur;
+        return $this->idFichefrais;
     }
 
     /**
-     * Add idfraisforfait
+     * Set idFraisforfait
      *
-     * @param \ACYG\GsbFraisBundle\Entity\Fraisforfait $idfraisforfait
+     * @param \ACYG\GsbFraisBundle\Entity\Fraisforfait $idFraisforfait
      * @return Lignefraisforfait
      */
-    public function addIdfraisforfait(\ACYG\GsbFraisBundle\Entity\Fraisforfait $idfraisforfait)
+    public function setIdFraisforfait(\ACYG\GsbFraisBundle\Entity\Fraisforfait $idFraisforfait = null)
     {
-        $this->idfraisforfait[] = $idfraisforfait;
+        $this->idFraisforfait = $idFraisforfait;
 
         return $this;
     }
 
     /**
-     * Remove idfraisforfait
+     * Get idFraisforfait
      *
-     * @param \ACYG\GsbFraisBundle\Entity\Fraisforfait $idfraisforfait
+     * @return \ACYG\GsbFraisBundle\Entity\Fraisforfait 
      */
-    public function removeIdfraisforfait(\ACYG\GsbFraisBundle\Entity\Fraisforfait $idfraisforfait)
+    public function getIdFraisforfait()
     {
-        $this->idfraisforfait->removeElement($idfraisforfait);
-    }
-
-    /**
-     * Get idfraisforfait
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdfraisforfait()
-    {
-        return $this->idfraisforfait;
-    }
-
-    /**
-     * Set idfraisforfait
-     *
-     * @param \ACYG\GsbFraisBundle\Entity\Fraisforfait $idfraisforfait
-     * @return Lignefraisforfait
-     */
-    public function setIdfraisforfait(\ACYG\GsbFraisBundle\Entity\Fraisforfait $idfraisforfait = null)
-    {
-        $this->idfraisforfait = $idfraisforfait;
-
-        return $this;
+        return $this->idFraisforfait;
     }
 }

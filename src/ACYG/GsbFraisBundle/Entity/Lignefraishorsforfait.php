@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Lignefraishorsforfait
  *
- * @ORM\Table(name="LigneFraisHorsForfait", indexes={@ORM\Index(name="idVisiteur", columns={"idVisiteur", "mois"})})
+ * @ORM\Table(name="LigneFraisHorsForfait", indexes={@ORM\Index(name="FK_LigneFraisHorsForfait_id_FicheFrais", columns={"id_FicheFrais"})})
  * @ORM\Entity
  */
 class Lignefraishorsforfait
@@ -20,19 +20,6 @@ class Lignefraishorsforfait
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="mois", type="integer", length=6, nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Fichefrais")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="mois", referencedColumnName="mois")
-     * })
-     */
-    private $mois;
 
     /**
      * @var string
@@ -60,11 +47,12 @@ class Lignefraishorsforfait
      *
      * @ORM\ManyToOne(targetEntity="Fichefrais")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idVisiteur", referencedColumnName="idVisiteur"),
-     *   @ORM\JoinColumn(name="mois", referencedColumnName="mois")
+     *   @ORM\JoinColumn(name="id_FicheFrais", referencedColumnName="id")
      * })
      */
-    private $idvisiteur;
+    private $idFichefrais;
+
+
 
     /**
      * Get id
@@ -74,29 +62,6 @@ class Lignefraishorsforfait
     public function getId()
     {
         return $this->id;
-    }
-    
-    /**
-     * Set mois
-     *
-     * @param integer $mois
-     * @return Lignefraisforfait
-     */
-    public function setMois($mois)
-    {
-        $this->mois = $mois;
-
-        return $this;
-    }
-
-    /**
-     * Get mois
-     *
-     * @return integer 
-     */
-    public function getMois()
-    {
-        return $this->mois;
     }
 
     /**
@@ -169,25 +134,25 @@ class Lignefraishorsforfait
     }
 
     /**
-     * Set idvisiteur
+     * Set idFichefrais
      *
-     * @param \ACYG\GsbFraisBundle\Entity\Fichefrais $idvisiteur
+     * @param \ACYG\GsbFraisBundle\Entity\Fichefrais $idFichefrais
      * @return Lignefraishorsforfait
      */
-    public function setIdvisiteur(\ACYG\GsbFraisBundle\Entity\Fichefrais $idvisiteur = null)
+    public function setIdFichefrais(\ACYG\GsbFraisBundle\Entity\Fichefrais $idFichefrais = null)
     {
-        $this->idvisiteur = $idvisiteur;
+        $this->idFichefrais = $idFichefrais;
 
         return $this;
     }
 
     /**
-     * Get idvisiteur
+     * Get idFichefrais
      *
      * @return \ACYG\GsbFraisBundle\Entity\Fichefrais 
      */
-    public function getIdvisiteur()
+    public function getIdFichefrais()
     {
-        return $this->idvisiteur;
+        return $this->idFichefrais;
     }
 }

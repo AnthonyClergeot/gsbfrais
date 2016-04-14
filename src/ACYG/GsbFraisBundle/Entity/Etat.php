@@ -15,7 +15,7 @@ class Etat
     /**
      * @var string
      *
-     * @ORM\Column(name="id", type="string", length=2, nullable=false)
+     * @ORM\Column(name="id", type="string", length=3, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */

@@ -3,6 +3,9 @@ namespace ACYG\GsbFraisBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ACYG\GsbFraisBundle\Entity\Visiteur ;
+use ACYG\GsbFraisBundle\Entity\Fichefrais ;
+use ACYG\GsbFraisBundle\Entity\Lignefraisforfait ;
+use ACYG\GsbFraisBundle\Entity\Lignefraishorsforfait ;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class ConsulterFicheController extends Controller {

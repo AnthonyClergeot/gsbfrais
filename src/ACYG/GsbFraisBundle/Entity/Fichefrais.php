@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Fichefrais
  *
- * @ORM\Table(name="FicheFrais", indexes={@ORM\Index(name="idEtat", columns={"idEtat"}), @ORM\Index(name="IDX_1C4987DC1D06ADE3", columns={"idVisiteur"})})
+ * @ORM\Table(name="FicheFrais", indexes={@ORM\Index(name="FK_FicheFrais_id_Visiteur", columns={"id_Visiteur"}), @ORM\Index(name="FK_FicheFrais_id_Etat", columns={"id_Etat"})})
  * @ORM\Entity
  */
 class Fichefrais
@@ -15,9 +15,16 @@ class Fichefrais
     /**
      * @var integer
      *
-     * @ORM\Column(name="mois", type="integer", length=6, nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="mois", type="integer", nullable=false)
      */
     private $mois;
 
@@ -47,30 +54,32 @@ class Fichefrais
      *
      * @ORM\ManyToOne(targetEntity="Etat")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idEtat", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_Etat", referencedColumnName="id")
      * })
      */
-    private $idetat;
+    private $idEtat;
 
     /**
      * @var \Visiteur
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Visiteur")
+     * @ORM\ManyToOne(targetEntity="Visiteur")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idVisiteur", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_Visiteur", referencedColumnName="id")
      * })
      */
-    private $idvisiteur;
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idfraisforfait = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $idVisiteur;
 
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set mois
@@ -165,48 +174,48 @@ class Fichefrais
     }
 
     /**
-     * Set idetat
+     * Set idEtat
      *
-     * @param \ACYG\GsbFraisBundle\Entity\Etat $idetat
+     * @param \ACYG\GsbFraisBundle\Entity\Etat $idEtat
      * @return Fichefrais
      */
-    public function setIdetat(\ACYG\GsbFraisBundle\Entity\Etat $idetat = null)
+    public function setIdEtat(\ACYG\GsbFraisBundle\Entity\Etat $idEtat = null)
     {
-        $this->idetat = $idetat;
+        $this->idEtat = $idEtat;
 
         return $this;
     }
 
     /**
-     * Get idetat
+     * Get idEtat
      *
      * @return \ACYG\GsbFraisBundle\Entity\Etat 
      */
-    public function getIdetat()
+    public function getIdEtat()
     {
-        return $this->idetat;
+        return $this->idEtat;
     }
 
     /**
-     * Set idvisiteur
+     * Set idVisiteur
      *
-     * @param \ACYG\GsbFraisBundle\Entity\Visiteur $idvisiteur
+     * @param \ACYG\GsbFraisBundle\Entity\Visiteur $idVisiteur
      * @return Fichefrais
      */
-    public function setIdvisiteur(\ACYG\GsbFraisBundle\Entity\Visiteur $idvisiteur)
+    public function setIdVisiteur(\ACYG\GsbFraisBundle\Entity\Visiteur $idVisiteur = null)
     {
-        $this->idvisiteur = $idvisiteur;
+        $this->idVisiteur = $idVisiteur;
 
         return $this;
     }
 
     /**
-     * Get idvisiteur
+     * Get idVisiteur
      *
      * @return \ACYG\GsbFraisBundle\Entity\Visiteur 
      */
-    public function getIdvisiteur()
+    public function getIdVisiteur()
     {
-        return $this->idvisiteur;
+        return $this->idVisiteur;
     }
 }

@@ -24,14 +24,14 @@ class Comptable
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=30, nullable=true)
+     * @ORM\Column(name="nom", type="string", length=40, nullable=true)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=30, nullable=true)
+     * @ORM\Column(name="prenom", type="string", length=40, nullable=true)
      */
     private $prenom;
 
@@ -52,7 +52,7 @@ class Comptable
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=30, nullable=true)
+     * @ORM\Column(name="adresse", type="string", length=60, nullable=true)
      */
     private $adresse;
 
@@ -66,7 +66,7 @@ class Comptable
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=30, nullable=true)
+     * @ORM\Column(name="ville", type="string", length=40, nullable=true)
      */
     private $ville;
 
