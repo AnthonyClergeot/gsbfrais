@@ -47,9 +47,9 @@
                         <th class='text-center'><em>Date opération</em></th>
                 </thead>
                 <tbody>
-                    {% for uneFiche in ficheFrais %}
+                    {% for uneLigne in lignesFraisForfait %}
                         <center>
-                            {{ uneFiche.mois }}
+                             <td><center>{{ uneLigne.quantite }}</center></td>
                         </center>
                     {% endfor %}
                 </tbody>

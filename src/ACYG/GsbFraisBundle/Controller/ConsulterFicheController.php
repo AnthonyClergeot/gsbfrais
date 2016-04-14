@@ -32,6 +32,11 @@ class ConsulterFicheController extends Controller {
             if ($form->isValid()) {
                 $formData = $form->getData() ;
                 $date = $formData['date'] ;
+                
+                $repository_visiteur = $this->getDoctrine()
+                                       ->getManager()
+                                       ->getRepository('ACYGGsbFraisBundle:Visiteur') ;
+                $visiteur = $repository_visiteur->findOneBy(array('id' => $session->get('visiteur'))) ;
 
                 $repository_fichefrais = $this->getDoctrine()
                                        ->getManager()
@@ -42,14 +47,16 @@ class ConsulterFicheController extends Controller {
                 $repository_lignefraishorsforfait = $this->getDoctrine()
                                        ->getManager()
                                        ->getRepository('ACYGGsbFraisBundle:Lignefraishorsforfait') ;
-
-                $lignesFraisForfait = $repository_lignefraisforfait->findOneBy(
-                        array('idvisiteur'=>'a117', 'mois'=>'3', 'idfraisforfait'=>'REP')) ;
-                $ficheFrais = $repository_fichefrais->findAll() ;
+                
+                $month = $date->format('m') ;
+                
+                $ficheFrais = $repository_fichefrais->findBY(array('idVisiteur'=>$visiteur, 'mois'=>$month)) ;
+                $lignesFraisForfait = $repository_lignefraisforfait->findBy(
+                        array('idFichefrais'=>$ficheFrais)) ;
                 
                 return $this->render('ACYGGsbFraisBundle:Visiteur:vueConsulterFiche.html.twig',
                     array('message'=>$message, 'form'=>$form->createView(), 'ficheFrais'=>$ficheFrais,
-                        'date'=>$date)) ;
+                        'date'=>$date, 'lignesFraisForfait'=>$lignesFraisForfait)) ;
             }
             
             return $this->render('ACYGGsbFraisBundle:Visiteur:vueConsulterFiche.html.twig',
