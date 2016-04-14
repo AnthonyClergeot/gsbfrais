@@ -1,0 +1,74 @@
+{% extends "ACYGGsbFraisBundle::Base.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" href="{{ asset('bundles/acyggsbfrais/css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/acyggsbfrais/css/styles.css') }}" />
+    <script src="{{ asset('bundles/acyggsbfrais/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/acyggsbfrais/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/acyggsbfrais/js/jquery-2.1.4.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    {% if message == 1 %}
+        <div class='col-lg-6 col-lg-offset-3'>
+            
+            <div class='alert alert-danger text-center'>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                Echec de la connexion. Login et/ou mot de passe incorrect.
+            </div>
+            
+        </div>
+    {% endif %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="well col-lg-6 col-lg-offset-3" style="box-shadow: 6px 6px 4px #666">
+                {{ form_start(form)}}
+
+                {{ form_errors(form) }}
+                <div class="form-group">
+
+                    {{ form_label(form.login,"Login", {'label_attr': {'class': 'col-md-3 control-label'} }) }}
+                    {{ form_errors(form.login) }}
+                    <div class="col-sm-8">
+                        {{ form_widget(form.login, {'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                </div>
+
+                <div class="form-group">  
+
+                    {{ form_label(form.motDePasse,"Mot de passe", {'label_attr': {'class': 'col-md-3 control-label'} }) }}
+                    {{ form_errors(form.motDePasse) }}
+                    <div class="col-sm-8">
+                        {{ form_widget(form.motDePasse, {'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                </div> 
+                    
+                <legend></legend>
+                    
+                <div class="form-group">
+
+                    <div class="col-sm-2 col-lg-offset-4">
+                        {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'} }) }}
+                    </div>
+                    <div class="col-sm-1">
+                        {{ form_widget(form.Annuler, {'attr': {'class': 'btn btn-primary'} }) }}
+                    </div>
+
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>        
+    </div> 
+   
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

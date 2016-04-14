@@ -1,0 +1,11 @@
+imports:
+    - { resource: "parameters.yml" }
+
+services:
+    dbFrais:
+        class: %pdo.class%
+        arguments:
+            - %dbFrais.dsn%
+            - %dbFrais.username%
+            - %dbFrais.password%
+            - %pdo.options%

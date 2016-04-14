@@ -1,0 +1,35 @@
+acyg_gsb_frais_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ACYGGsbFraisBundle:Default:index }
+
+acyg_gsb_frais_vueConnexion:
+    path:     /Connexion
+    defaults: { _controller: ACYGGsbFraisBundle:Connexion:index }
+    
+acyg_gsb_frais_Deconnexion:
+    path:     /Deconnexion
+    defaults: { _controller: ACYGGsbFraisBundle:Connexion:deconnexion }
+
+acyg_gsb_frais_vueVisiteur:
+    path:     /Visiteur
+    defaults: {_controller: ACYGGsbFraisBundle:Visiteur:index }
+
+acyg_gsb_frais_vueRenseignerFiche:
+    path:     /Renseigner
+    defaults: {_controller: ACYGGsbFraisBundle:RenseignerFiche:index }
+    
+acyg_gsb_frais_vueConsulterFiche:
+    path:     /Consulter
+    defaults: {_controller: ACYGGsbFraisBundle:ConsulterFiche:index }
+
+acyg_gsb_frais_vueComptable:
+    path:     /Comptable
+    defaults: {_controller: ACYGGsbFraisBundle:Comptable:index }
+    
+acyg_gsb_frais_vueValiderFiche:
+    path:     /Valider
+    defaults: {_controller: ACYGGsbFraisBundle:ValiderFiche:index }
+    
+acyg_gsb_frais_vueSuivrePaiement:
+    path:     /Suivie
+    defaults: {_controller: ACYGGsbFraisBundle:SuivrePaiement:index }

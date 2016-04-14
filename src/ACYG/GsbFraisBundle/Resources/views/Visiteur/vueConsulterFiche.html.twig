@@ -1,0 +1,99 @@
+{% extends "ACYGGsbFraisBundle::Base.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block body %}
+    {{ parent() }}
+        <div class="container col-lg-7 col-lg-offset-1">
+            <div class="row">
+            <h4><strong>Période</strong></h4>
+            {{ date | date("d/m/Y")}}
+            
+            {{ form_start(form)}}
+
+            {{ form_errors(form) }}
+  
+            {{ form_label(form.date,"Date", {'label_attr': {'class': 'col-sm-1 control-label'} }) }}
+            {{ form_errors(form.date) }}
+            <div class="col-sm-1">
+                {{ form_widget(form.date.day, { 'attr': { 'style': 'display:none' } }) }}
+            </div>
+            <div class="col-sm-2">
+                {{ form_widget(form.date.month) }}
+            </div>
+            <div class="col-sm-2">
+                {{ form_widget(form.date.year) }}
+            </div>
+            <div>
+                {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'} }) }}
+            </div>
+                
+            {{ form_end(form) }} 
+
+            <br />
+                
+            <table class='table table-hover table-condensed col-lg-offset-1'>
+                
+                <h4><strong>Frais au Forfait</strong></h4>
+                
+                <thead>
+                        <th class='text-center'><em>Repas midi</em></th>
+                        <th class='text-center'><em>Nuitées</em></th>
+                        <th class='text-center'><em>Étape</em></th>
+                        <th class='text-center'><em>Km</em></th>
+                        <th class='text-center'><em>Situation</em></th>
+                        <th class='text-center'><em>Date opération</em></th>
+                </thead>
+                <tbody>
+                    {% for uneFiche in ficheFrais %}
+                        <center>
+                            {{ uneFiche.mois }}
+                        </center>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <br />
+          
+            <table class='table table-hover table-condensed col-lg-offset-1'>
+                
+                <h4><strong>Hors Forfait</strong></h4>
+                
+                <thead>
+                        <th class='text-center'><em>Date</em></th>
+                        <th class='text-center'><em>Libellé</em></th>
+                        <th class='text-center'><em>Montant</em></th>
+                        <th class='text-center'><em>Situation</em></th>
+                        <th class='text-center'><em>Date opération</em></th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            
+            <br />
+          
+            <table class='table table-hover table-condensed col-lg-offset-1'>
+                
+                <h4><strong>Hors Classification</strong></h4>
+                
+                <thead>
+                        <th class='text-center'><em>Nb justificatifs</em></th>
+                        <th class='text-center'><em>Montant</em></th>
+                        <th class='text-center'><em>Situation</em></th>
+                        <th class='text-center'><em>Date opération</em></th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,48 @@
+/* Styles des divisions principales de la page */
+#footer{
+    font-size: 12px;
+    font-family: Verdana, Geneva, sans-serif;
+    color: #333;
+    background-color: #E6E6E6;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    width: 100%;
+    position:fixed;
+    bottom:0;
+}
+
+li {
+    float: left;
+}
+
+a {
+    display: block;
+    padding: 8px;
+    background-color: #f3f3f3;
+}
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #666;
+}
+
+li a:hover {
+    background-color: #aaa;
+}
+
+.active {
+    background-color: #333;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}

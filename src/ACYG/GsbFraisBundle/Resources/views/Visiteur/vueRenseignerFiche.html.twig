@@ -1,0 +1,136 @@
+{% extends "ACYGGsbFraisBundle::Base.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <h3>Gestion des Frais</h3>
+        </div>
+        
+        <div class="row">
+            <div>
+                <div class="well col-lg-9 col-lg-offset-1" style="box-shadow: 6px 6px 4px #666">
+                    
+                    {{ form_start(form)}}
+
+                    {{ form_errors(form) }}
+                    
+                    <h4>Saisie</h4>
+                    
+                    <div class="form-group">
+                        {{ form_label(form.mois,"Mois (2 chiffres)", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.mois) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.mois, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                        {{ form_label(form.annee,"Annee (4 chiffres)", {'label_attr': {'class': 'col-md-3 control-label'} }) }}
+                        {{ form_errors(form.annee) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.annee, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <br />
+                    <h4>Frais au forfait</h4>
+                    
+                    <div class="form-group">
+                        {{ form_label(form.repasMidi,"Repas midi", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.repasMidi) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.repasMidi, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">  
+                        {{ form_label(form.nuitees,"Nuitées", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.nuitees) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.nuitees, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div> 
+
+                    <div class="form-group">  
+                        {{ form_label(form.etape,"Etape", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.etape) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.etape, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">  
+                        {{ form_label(form.km,"Km", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.km) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.km, {'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                        
+                    <br />
+                    <h4>Frais hors forfait</h4>
+                        
+                    <div class="form-group">  
+                        {{ form_label(form.date,"Date", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.date) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(form.date, {'attr': {'class': 'form-date'} }) }}
+                        </div>
+                    </div>
+                    <div class="form-group">  
+                        {{ form_label(form.libelle,"Libellé", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.libelle) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.libelle, {'attr': {'class': 'form-date'} }) }}
+                        </div>
+                    </div>
+                    <div class="form-group">  
+                        {{ form_label(form.quantite,"Quantité", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.quantite) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.quantite, {'attr': {'class': 'form-date'} }) }}
+                        </div>
+                    </div>
+                        
+                    <br />
+                    <h4>Hors classification</h4>
+                    
+                    <div class="form-group">  
+                        {{ form_label(form.nbJustificatif,"Nombre justificatifs", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.nbJustificatif) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.nbJustificatif, {'attr': {'class': 'form-date'} }) }}
+                        </div>
+                    </div>
+                    <div class="form-group">  
+                        {{ form_label(form.montantTotal,"Montant total", {'label_attr': {'class': 'col-md-2 control-label'} }) }}
+                        {{ form_errors(form.montantTotal) }}
+                        <div class="col-sm-3">
+                            {{ form_widget(form.montantTotal, {'attr': {'class': 'form-date'} }) }}
+                        </div>
+                    </div>
+                        
+                    <br />
+                    <legend></legend>
+                        
+                    <div class="form-group">
+                        <div class="col-sm-2 col-lg-offset-4">
+                            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'} }) }}
+                        </div>
+                        <div class="col-sm-1">
+                            {{ form_widget(form.Annuler, {'attr': {'class': 'btn btn-primary'} }) }}
+                        </div>
+                    </div>
+                        
+                    {{ form_end(form) }}    
+                </div>
+            </div>  
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

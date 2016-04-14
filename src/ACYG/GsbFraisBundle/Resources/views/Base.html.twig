@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <link rel="stylesheet" href="{{ asset('bundles/acyggsbfrais/css/bootstrap.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/acyggsbfrais/css/styles.css') }}" />
+            <script src="{{ asset('bundles/acyggsbfrais/js/bootstrap.js') }}"></script>
+            <script src="{{ asset('bundles/acyggsbfrais/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('bundles/acyggsbfrais/js/jquery-2.1.4.min.js') }}"></script>
+            
+            <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title>
+        {% endblock %}
+    </head>
+    <body>
+        <div id="content" >
+            {% block body %}
+                {% if app.session.get('visiteur') == true %}
+                    <ul>
+                        <a class="navbar-brand" href="">Intranet GSB</a>
+                        <li><a href="{{ path('acyg_gsb_frais_vueVisiteur') }}">Accueil</a></li>
+                        <li><a href="{{ path('acyg_gsb_frais_vueRenseignerFiche') }}">Renseigner fiche de frais</a></li>
+                        <li><a href="{{ path('acyg_gsb_frais_vueConsulterFiche') }}">Consulter fiche de frais</a></li>
+                        <li class="nav navbar-nav navbar-right"><a href="{{ path('acyg_gsb_frais_Deconnexion') }}">
+                                <span class="glyphicon glyphicon-log-out"></span> Déconnexion </a></li>
+                        <li class="navbar-right navbar-text"><span class="glyphicon glyphicon-user"></span>
+                            {{ app.session.get('visiteur').nom }} {{ app.session.get('visiteur').prenom }}</li>
+                    </ul>
+                    <br />
+                {% elseif app.session.get('comptable') == true %}
+                    <ul>
+                        <a class="navbar-brand" href="">Intranet GSB</a>
+                        <li><a href="{{ path('acyg_gsb_frais_vueComptable') }}">Accueil</a></li>
+                        <li><a href="{{ path('acyg_gsb_frais_vueValiderFiche') }}">Valider fiche de frais</a></li>
+                        <li><a href="{{ path('acyg_gsb_frais_vueSuivrePaiement') }}">Suivre paiement</a></li>
+                        <li class="nav navbar-nav navbar-right"><a href="{{ path('acyg_gsb_frais_Deconnexion') }}">
+                                <span class="glyphicon glyphicon-log-out"></span> Déconnexion </a></li>
+                        <li class="navbar-right navbar-text"><span class="glyphicon glyphicon-user"></span>
+                            {{ app.session.get('comptable').nom }} {{ app.session.get('comptable').prenom }}</li>
+                    </ul>
+                    <br />
+                {% else %}
+                    <ul>
+                        <a class="navbar-brand" href="">Intranet GSB</a>
+                        {#<li class="nav navbar-nav navbar-right"><a href="{{ path('acyg_gsb_frais_vueConnexion') }}">
+                                <span class="glyphicon glyphicon-log-in"></span> Connexion </a></li>#}
+                    </ul>
+                    <br />
+                {% endif %}
+            {% endblock %}
+        </div>
+        
+        <div id="footer">
+            {% block footer %}
+                <center>&copy; Copyright 2015 by Yohann Godefroy & Anthony Clergeot</center>
+            {% endblock %}
+        </div>
+    </body>
+</html>

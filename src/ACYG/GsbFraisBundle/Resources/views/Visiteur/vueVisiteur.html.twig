@@ -1,0 +1,38 @@
+{% extends "ACYGGsbFraisBundle::Base.html.twig" %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="col-md-12">
+            <p>
+            Bienvenue sur la page de gestion des visiteurs. Ici vous pouvez créer une fiche de frais 
+            ou consulter vos fiches existantes.
+            </p>
+            <legend class="col-md-10"></legend>
+            <br />
+            
+            <h4>Renseigner une fiche de frais</h4>
+            <p>
+                Pour créer une fiche de frais : 
+            <a class="btn btn-primary" href="{{ path('acyg_gsb_frais_vueRenseignerFiche') }}" 
+                       role="button">Créer une fiche</a>
+            </p>
+            <br />
+            
+            <h4>Consulter une fiche de frais</h4>
+            <p>
+                Pour consulter vos fiches de frais : 
+            <a class="btn btn-primary" href="{{ path('acyg_gsb_frais_vueConsulterFiche') }}" 
+                       role="button">Consulter vos fiches</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

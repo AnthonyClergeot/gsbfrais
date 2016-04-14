@@ -1,0 +1,7 @@
+acyg_gsb_frais:
+    resource: "@ACYGGsbFraisBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
