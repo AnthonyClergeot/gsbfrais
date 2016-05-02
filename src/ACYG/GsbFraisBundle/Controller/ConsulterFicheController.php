@@ -28,6 +28,7 @@ class ConsulterFicheController extends Controller {
             $date = null ;
             $ficheFrais = null ;
             $lignesFraisForfait = null ;
+            $lignesFraisHorsForfait = null ;
 
             if ($form->isValid()) {
                 $formData = $form->getData() ;
@@ -53,15 +54,17 @@ class ConsulterFicheController extends Controller {
                 $ficheFrais = $repository_fichefrais->findBY(array('idVisiteur'=>$visiteur, 'mois'=>$month)) ;
                 $lignesFraisForfait = $repository_lignefraisforfait->findBy(
                         array('idFichefrais'=>$ficheFrais)) ;
+                $lignesFraisHorsForfait = $repository_lignefraishorsforfait->findBy(
+                        array('idFichefrais'=>$ficheFrais)) ;
                 
                 return $this->render('ACYGGsbFraisBundle:Visiteur:vueConsulterFiche.html.twig',
                     array('message'=>$message, 'form'=>$form->createView(), 'ficheFrais'=>$ficheFrais,
-                        'date'=>$date, 'lignesFraisForfait'=>$lignesFraisForfait)) ;
+                        'date'=>$date, 'lignesFraisForfait'=>$lignesFraisForfait, 'lignesFraisHorsForfait'=>$lignesFraisHorsForfait)) ;
             }
             
             return $this->render('ACYGGsbFraisBundle:Visiteur:vueConsulterFiche.html.twig',
                     array('message'=>$message, 'form'=>$form->createView(), 'ficheFrais'=>$ficheFrais,
-                        'date'=>$date)) ;
+                        'date'=>$date, 'lignesFraisForfait'=>$lignesFraisForfait, 'lignesFraisHorsForfait'=>$lignesFraisHorsForfait)) ;
         }
         else {
                 return $this->redirectToRoute("acyg_gsb_frais_vueConnexion") ;
