@@ -50,8 +50,9 @@ class ConsulterFicheController extends Controller {
                                        ->getRepository('ACYGGsbFraisBundle:Lignefraishorsforfait') ;
                 
                 $month = $date->format('m') ;
+                $year = $date->format('Y') ;
                 
-                $ficheFrais = $repository_fichefrais->findBY(array('idVisiteur'=>$visiteur, 'mois'=>$month)) ;
+                $ficheFrais = $repository_fichefrais->findBY(array('idVisiteur'=>$visiteur, 'mois'=>$month, 'annee'=>$year)) ;
                 $lignesFraisForfait = $repository_lignefraisforfait->findBy(
                         array('idFichefrais'=>$ficheFrais)) ;
                 $lignesFraisHorsForfait = $repository_lignefraishorsforfait->findBy(

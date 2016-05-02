@@ -75,10 +75,10 @@
                         <td><center>{{ uneLigne.date | date("d/m/Y") }}</center></td>
                         <td><center>{{ uneLigne.libelle }}</center></td>
                         <td><center>{{ uneLigne.montant }}</center></td>
-                    {% endfor %}
-                    {% for uneFiche in ficheFrais %}
-                        <td><center>{{ uneFiche.idEtat }}</center></td>
-                        <td><center>{{ uneFiche.datemodif | date("d/m/Y") }}</center></td>
+                        {% for uneFiche in ficheFrais %}
+                            <td><center>{{ uneFiche.idEtat }}</center></td>
+                            <td><center>{{ uneFiche.datemodif | date("d/m/Y") }}</center></td>
+                        {% endfor %}
                     {% endfor %}
                 </tbody>
             </table>

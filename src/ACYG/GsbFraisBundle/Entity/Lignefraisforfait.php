@@ -31,7 +31,7 @@ class Lignefraisforfait
     /**
      * @var \Fichefrais
      *
-     * @ORM\ManyToOne(targetEntity="Fichefrais")
+     * @ORM\ManyToOne(targetEntity="Fichefrais", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_FicheFrais", referencedColumnName="id")
      * })

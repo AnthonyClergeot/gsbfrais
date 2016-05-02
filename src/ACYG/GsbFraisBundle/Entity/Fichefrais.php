@@ -31,6 +31,13 @@ class Fichefrais
     /**
      * @var integer
      *
+     * @ORM\Column(name="annee", type="integer", nullable=false)
+     */
+    private $annee;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="nbJustificatifs", type="integer", nullable=true)
      */
     private $nbjustificatifs;
@@ -62,7 +69,7 @@ class Fichefrais
     /**
      * @var \Visiteur
      *
-     * @ORM\ManyToOne(targetEntity="Visiteur")
+     * @ORM\ManyToOne(targetEntity="Visiteur", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_Visiteur", referencedColumnName="id")
      * })
@@ -102,6 +109,29 @@ class Fichefrais
     public function getMois()
     {
         return $this->mois;
+    }
+
+    /**
+     * Set annee
+     *
+     * @param integer $annee
+     * @return Fichefrais
+     */
+    public function setAnnee($annee)
+    {
+        $this->annee = $annee;
+
+        return $this;
+    }
+
+    /**
+     * Get annee
+     *
+     * @return integer 
+     */
+    public function getAnnee()
+    {
+        return $this->annee;
     }
 
     /**
